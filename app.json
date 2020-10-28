@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-people",
-    "slug": "my-people",
+    "name": "people",
+    "slug": "people",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

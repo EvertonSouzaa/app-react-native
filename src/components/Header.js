@@ -1,36 +1,26 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import{View, Text, StyleSheet} from "react-native";
 
-
-
-
-
-const Header = props => (
+const Header = (props) => (
   <View style = {style.container}>
-    <Text style = {style.title}>People</Text>
-    </View>
-)
+    <Text style = {style.title}>{props.title}</Text>
+  </View>
+);
 
-const style = StyleSheet.create({
-  container: {
-
-     marginTop: 25,
-    backgroundColor: '#6ca2f7',
-
-     alignItems: 'center',
-    justifyContent: 'center'
-
-},
-
-  title: {
+const style = StyleSheet.create ( {
+  container:  {
+    marginTop: 25,
+    backgroundColor: '#171717',
   
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  title:  {
     fontSize: 50,
-    color: '#fff',
+    color: '#9238f4',
   
-}
-
+  }
 });
-
-
 
 export default Header;
