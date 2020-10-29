@@ -1,45 +1,85 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Text, StyleSheet, View, ActivityIndicator } from 'react-native';
 
-import { Text, View } from 'react-native';
-
-import Header from '../components/Header';
-import PeopleList from '../components/PeopleList';
+// import Header from '../components/Header.js';
+import PeopleList from '../components/PeopleList.js';
 
 import axios from 'axios';
 
+export default class PeoplePage extends React.Component {
 
-export default class App  extends React.Component {
+  constructor(props) {
+    super(props);
 
-      constructor(props) {
-        super(props);
+    this.state = {
+      peoples: [],
+      loading: false,
+      error: false,
+    };
 
-        this.state = {
-          peoples: []
-        };
-      }
+  }
 
-componentDidMount() {
-       //promisses
+  componentDidMount() {
+    this.setState({ loading: true} );
+    setTimeout(()=> {
 
-    axios.get('https://randomuser.me/api/?nat=br&results=5')
-       .then(response => {
-        const{results} = response.data
-        this.setState({
-            peoples:  results
+    /* Promises */
+    axios
+        .get('https://randomuser.me/api/?nat=br&results=15')
+        .then(response => {
+            const { results } = response.data;
+            this.setState({
+              peoples: results,
+              loading: false,
+            });
+        }).catch( error => {
+            this.setState( {
+                loading: false,
+                error: true })
         });
-    })
+    },3500 )
+  }
+
+// renderLoading() {
+//   if (this.state.loading)
+//       return <ActivityIndicator size="large" color="#169c39" />;
+//   return null;
+// }
+
+  render() {
+    return (
+      <View style={styles.container}>
+          {/* { this.renderLoading() } */}
+          {
+              this.state.error
+              ? <Text style={styles.errorMessage}> Ops... Algo deu errado... </Text>
+              : this.state.loading 
+                  ? <ActivityIndicator size="large" color="#169c39" />
+                  :  <PeopleList
+                        peoples={this.state.peoples} 
+                        onPressItem={ pageParams => {
+                        this.props.navigation.navigate('PeopleDetail', pageParams );
+                      }}/>
+          }
+         
+      </View>
+    );
+  }
 }
 
-   
 
-    render() {
+const styles = StyleSheet.create({
+      container: {
+            flex: 1,
+            justifyContent: 'center'
+            },
 
-      return (
-        <View>
-        <Header title = 'Pessoas!' />
-        <PeopleList peoples={this.state.peoples} />
-        </View>
-);
-}
-}
+      errorMessage: {
+            color: 'red',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            fontWeight: "bold",
+            fontSize: 18
+      }
+  
+          });

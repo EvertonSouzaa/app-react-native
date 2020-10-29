@@ -1,26 +1,32 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import PeopleListItem from './PeopleListItem';
 
+const PeopleList = props => {
+    const { peoples, onPressItem } = props;
 
-const PeopleList = props => { 
-  const {peoples} = props;
-  const items = peoples.map(people => <PeopleListItem key={people.name.first} people = {people} />
-  );
-   return (
-       <View style= { styles.container } >
-         { items }
-        </View>
-      );
-   };
+    return (
+        <FlatList style={styles.container}
+             data={peoples}
+             renderItem={ ( { item } ) => (
+             <PeopleListItem
+                people={item}
+                navigateToPeopleDetail={onPressItem} />
+                )} 
+                keyExtractor={ item => item.name.first }
+                />
+    )
+};
 
-const styles = StyleSheet.create ({
-      container: {
-          backgroundColor: '#9238f4'
-      },
-     
+const styles = StyleSheet.create({
+
+    container:
+    {
+        backgroundColor: '#9238f4'
+    },
+
+
 });
-
 
 export default PeopleList;

@@ -1,26 +1,33 @@
 import React from 'react';
-import{View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet } from 'react-native';
+
 
 const Header = (props) => (
-  <View style = {style.container}>
-    <Text style = {style.title}>{props.title}</Text>
-  </View>
+    <View style={style.container} >
+        <Text style={style.title}>{props.title}</Text>
+    </View>
 );
 
-const style = StyleSheet.create ( {
-  container:  {
-    marginTop: 25,
-    backgroundColor: '#171717',
-  
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+/* style sheet */
+const style = StyleSheet.create({
 
-  title:  {
-    fontSize: 50,
-    color: '#9238f4',
-  
-  }
+    container: {
+        // [pripriedades CSS]: [Valor]
+        marginTop: 25,
+        backgroundColor: '#169c39',
+
+        // Flex Box
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    title: {
+        fontSize: 50,
+        color: '#fff',
+        // image: 'src\imagens\logoVetNaWeb.jpg'
+    }
+
 });
+
 
 export default Header;
