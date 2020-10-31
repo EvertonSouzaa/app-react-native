@@ -25,13 +25,16 @@ const styles = StyleSheet.create(
             paddingTop: 3,
             paddingBottom: 3,
             borderWidth:1,
-            borderColor: '#171717'
+            borderColor: '#171717',
+            
+           
         },
 
         cellLabel: {
             paddingLeft: 5,
             fontSize: 18,
-            flex: 1
+            flex: 1,
+            color: 'white'
         },
  
         cellBold: {

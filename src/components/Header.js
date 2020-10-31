@@ -24,7 +24,8 @@ const style = StyleSheet.create({
     title: {
         fontSize: 50,
         color: '#fff',
-        // image: 'src\imagens\logoVetNaWeb.jpg'
+       
+        
     }
 
 });

@@ -40,11 +40,7 @@ export default class PeoplePage extends React.Component {
     },3500 )
   }
 
-// renderLoading() {
-//   if (this.state.loading)
-//       return <ActivityIndicator size="large" color="#169c39" />;
-//   return null;
-// }
+
 
   render() {
     return (
@@ -54,7 +50,7 @@ export default class PeoplePage extends React.Component {
               this.state.error
               ? <Text style={styles.errorMessage}> Ops... Algo deu errado... </Text>
               : this.state.loading 
-                  ? <ActivityIndicator size="large" color="#169c39" />
+                  ? <ActivityIndicator size="large" color="white" />
                   :  <PeopleList
                         peoples={this.state.peoples} 
                         onPressItem={ pageParams => {

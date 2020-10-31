@@ -52,7 +52,9 @@ const styles = StyleSheet.create(
         {
             fontSize: 20,
             paddingLeft: 15,
-            flex: 6
+            flex: 6,
+
+            color: 'white'
         },
 
         avatar:
